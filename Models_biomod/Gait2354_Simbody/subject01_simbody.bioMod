@@ -1,7 +1,7 @@
 version 4
 
 
-// File extracted from /home/charbie/Documents/Programmation/biobuddy/external/opensim-models/Models/Gait2354_Simbody/subject01_simbody.osim on the 2025-08-06 09:15
+// File extracted from /home/charbie/Documents/Programmation/biobuddy/external/opensim-models/Models/Gait2354_Simbody/subject01_simbody.osim on the 2025-08-06 09:40
 
 // Original file publication : Delp, S.L., Loan, J.P., Hoy, M.G., Zajac, F.E., Topp E.L., Rosen, J.M.: An interactive graphics-based model of the lower extremity to study orthopaedic surgical procedures, IEEE Transactions on Biomedical Engineering, vol. 37, pp. 757-767, 1990. Yamaguchi G.T., Zajac F.E.: A planar model of the knee joint to characterize the knee extensor mechanism." J . Biomecl7. vol. 21. pp. 1-10. 1989. Anderson F.C., Pandy M.G.: A dynamic optimization solution for vertical jumping in three dimensions. Computer Methods in Biomechanics and Biomedical Engineering 2:201-231, 1999. Anderson F.C., Pandy M.G.: Dynamic optimization of human walking. Journal of Biomechanical Engineering 123:381-390, 2001.
 
@@ -111,6 +111,10 @@ segment	pelvis_geom_2
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	../../Geometry_triangle/pelvis.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.02458	1.02458	1.02458
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -123,6 +127,10 @@ segment	pelvis_geom_3
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	../../Geometry_triangle/l_pelvis.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.02458	1.02458	1.02458
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -141,6 +149,10 @@ segment	pelvis
 		0.099293	0.000000	0.000000
 		0.000000	0.084128	0.000000
 		0.000000	0.000000	0.055925
+	meshfile	../../Geometry_triangle/sacrum.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.02458	1.02458	1.02458
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	R.ASIS
@@ -232,6 +244,10 @@ segment	femur_r
 		0.129331	0.000000	0.000000
 		0.000000	0.033902	0.000000
 		0.000000	0.000000	0.136382
+	meshfile	../../Geometry_triangle/femur_r.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.14724	1.14724	1.14724
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	R.Thigh.Upper
@@ -332,6 +348,10 @@ segment	tibia_r_geom_2
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	../../Geometry_triangle/fibula.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	0.988523	0.988523	0.988523
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -350,6 +370,10 @@ segment	tibia_r
 		0.048680	0.000000	0.000000
 		0.000000	0.004926	0.000000
 		0.000000	0.000000	0.049356
+	meshfile	../../Geometry_triangle/tibia_r.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	0.988523	0.988523	0.988523
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	R.Shank.Upper
@@ -413,9 +437,9 @@ segment	talus_r_ankle_angle_r
 	parent	talus_r_translation
 	RTinMatrix	1
 	RT
-		-0.105014	0.668795	-0.735993	0.000000
-		-0.174022	0.716307	0.675737	0.000000
-		0.979126	0.199041	0.041163	0.000000
+		-0.105014	0.373088	-0.921834	0.000000
+		-0.174022	0.905762	0.386408	0.000000
+		0.979126	0.200998	-0.030192	0.000000
 		0.000000	0.000000	0.000000	1.000000
 	rotations	x
 	rangesQ 
@@ -429,9 +453,9 @@ segment	talus_r_rotation_1
 	parent	talus_r_ankle_angle_r
 	RTinMatrix	1
 	RT
-		0.711036	-0.174022	0.681281	0.000000
-		0.566145	0.716307	-0.407902	0.000000
-		-0.417022	0.675737	0.607842	0.000000
+		0.145270	-0.174022	0.973968	0.000000
+		0.411715	0.905762	0.100427	0.000000
+		-0.899660	0.386408	0.203228	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -441,9 +465,9 @@ segment	talus_r_rotation_2
 	parent	talus_r_rotation_1
 	RTinMatrix	1
 	RT
-		-0.506009	0.515089	0.691837	0.000000
-		0.713366	0.700792	0.000000	0.000000
-		-0.484834	0.493533	-0.722054	0.000000
+		-0.121826	0.083192	0.989059	0.000000
+		0.563934	0.825820	0.000000	0.000000
+		-0.816784	0.557764	-0.147521	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -453,9 +477,9 @@ segment	talus_r_reset_axis
 	parent	talus_r_rotation_2
 	RTinMatrix	1
 	RT
-		0.074733	0.713366	-0.696795	0.000000
-		-0.076074	0.700792	0.709298	0.000000
-		0.994298	-0.000000	0.106641	0.000000
+		0.088066	0.563934	-0.821110	0.000000
+		-0.060138	0.825820	0.560719	0.000000
+		0.994298	0.000000	0.106641	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -475,6 +499,10 @@ segment	talus_r
 		0.000966	0.000000	0.000000
 		0.000000	0.000966	0.000000
 		0.000000	0.000000	0.000966
+	meshfile	../../Geometry_triangle/talus.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.11398	1.11398	1.11398
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -507,9 +535,9 @@ segment	calcn_r_subtalar_angle_r
 	parent	calcn_r_translation
 	RTinMatrix	1
 	RT
-		0.787180	-0.230904	0.571867	0.000000
-		0.604747	0.470852	-0.642323	0.000000
-		-0.120949	0.851459	0.510284	0.000000
+		0.787180	0.316267	0.529456	0.000000
+		0.604747	-0.227475	-0.763240	0.000000
+		-0.120949	0.920994	-0.370325	0.000000
 		0.000000	0.000000	0.000000	1.000000
 	rotations	x
 	rangesQ 
@@ -523,9 +551,9 @@ segment	calcn_r_rotation_1
 	parent	calcn_r_subtalar_angle_r
 	RTinMatrix	1
 	RT
-		0.537291	0.604747	-0.587876	0.000000
-		0.354125	0.470852	0.808018	0.000000
-		0.765450	-0.642323	0.038828	0.000000
+		0.743238	0.604747	-0.286142	0.000000
+		0.505515	-0.227475	0.832292	0.000000
+		0.438236	-0.763240	-0.474777	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -535,9 +563,9 @@ segment	calcn_r_rotation_2
 	parent	calcn_r_rotation_1
 	RTinMatrix	1
 	RT
-		-0.364298	0.567820	-0.738151	0.000000
-		0.841669	0.539993	0.000000	0.000000
-		0.398597	-0.621279	-0.674635	0.000000
+		-0.885189	0.295557	-0.359286	0.000000
+		0.316705	0.948524	0.000000	0.000000
+		0.340792	-0.113788	-0.933227	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -547,9 +575,9 @@ segment	calcn_r_reset_axis
 	parent	calcn_r_rotation_2
 	RTinMatrix	1
 	RT
-		-0.533730	0.841669	0.082007	0.000000
-		0.831907	0.539993	-0.127822	0.000000
-		-0.151867	0.000000	-0.988401	0.000000
+		-0.937522	0.316705	0.144050	0.000000
+		0.313031	0.948524	-0.048097	0.000000
+		-0.151867	-0.000000	-0.988401	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -569,6 +597,10 @@ segment	calcn_r
 		0.001352	0.000000	0.000000
 		0.000000	0.003767	0.000000
 		0.000000	0.000000	0.003960
+	meshfile	../../Geometry_triangle/foot.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.02708	1.02708	1.02708
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	R.Heel
@@ -676,6 +708,10 @@ segment	toes_r
 		0.000097	0.000000	0.000000
 		0.000000	0.000193	0.000000
 		0.000000	0.000000	0.000097
+	meshfile	../../Geometry_triangle/bofoot.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.02708	1.02708	1.02708
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -748,6 +784,10 @@ segment	femur_l
 		0.129331	0.000000	0.000000
 		0.000000	0.033902	0.000000
 		0.000000	0.000000	0.136382
+	meshfile	../../Geometry_triangle/femur_l.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.14724	1.14724	1.14724
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	L.Thigh.Upper
@@ -848,6 +888,10 @@ segment	tibia_l_geom_2
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	../../Geometry_triangle/l_fibula.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	0.988523	0.988523	0.988523
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -866,6 +910,10 @@ segment	tibia_l
 		0.048680	0.000000	0.000000
 		0.000000	0.004926	0.000000
 		0.000000	0.000000	0.049356
+	meshfile	../../Geometry_triangle/tibia_l.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	0.988523	0.988523	0.988523
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	L.Shank.Upper
@@ -929,9 +977,9 @@ segment	talus_l_ankle_angle_l
 	parent	talus_l_translation
 	RTinMatrix	1
 	RT
-		0.105014	-0.456692	0.883405	0.000000
-		0.174022	-0.866171	-0.468469	0.000000
-		0.979126	0.202928	-0.011485	0.000000
+		0.105014	0.890274	-0.443153	0.000000
+		0.174022	0.422290	0.889599	0.000000
+		0.979126	-0.170539	-0.110581	0.000000
 		0.000000	0.000000	0.000000	1.000000
 	rotations	x
 	rangesQ 
@@ -945,9 +993,9 @@ segment	talus_l_rotation_1
 	parent	talus_l_ankle_angle_l
 	RTinMatrix	1
 	RT
-		0.865635	0.174022	0.469459	0.000000
-		-0.092241	-0.866171	0.491161	0.000000
-		0.492105	-0.468469	-0.733736	0.000000
+		0.952409	0.174022	0.250266	0.000000
+		0.157413	0.422290	-0.892688	0.000000
+		-0.261033	0.889599	0.374800	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -957,9 +1005,9 @@ segment	talus_l_rotation_2
 	parent	talus_l_rotation_1
 	RTinMatrix	1
 	RT
-		-0.258504	0.840179	0.476734	0.000000
-		0.955783	0.294073	0.000000	0.000000
-		-0.140195	0.455654	-0.879048	0.000000
+		-0.922536	0.290411	0.254144	0.000000
+		0.300270	0.953854	-0.000000	0.000000
+		-0.242416	0.076312	-0.967166	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -969,9 +1017,9 @@ segment	talus_l_reset_axis
 	parent	talus_l_rotation_2
 	RTinMatrix	1
 	RT
-		-0.031360	0.955783	-0.292396	0.000000
-		0.101925	0.294073	0.950333	0.000000
-		0.994298	0.000000	-0.106641	0.000000
+		-0.101720	0.300270	-0.948415	0.000000
+		0.032021	0.953854	0.298558	0.000000
+		0.994298	-0.000000	-0.106641	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -991,6 +1039,10 @@ segment	talus_l
 		0.000966	0.000000	0.000000
 		0.000000	0.000966	0.000000
 		0.000000	0.000000	0.000966
+	meshfile	../../Geometry_triangle/l_talus.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.11398	1.11398	1.11398
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -1023,9 +1075,9 @@ segment	calcn_l_subtalar_angle_l
 	parent	calcn_l_translation
 	RTinMatrix	1
 	RT
-		-0.787180	-0.082879	-0.611129	0.000000
-		-0.604747	-0.090605	0.791247	0.000000
-		-0.120949	0.992432	0.021201	0.000000
+		-0.787180	-0.556102	0.266643	0.000000
+		-0.604747	0.780811	-0.156893	0.000000
+		-0.120949	-0.284755	-0.950939	0.000000
 		0.000000	0.000000	0.000000	1.000000
 	rotations	x
 	rangesQ 
@@ -1039,9 +1091,9 @@ segment	calcn_l_rotation_1
 	parent	calcn_l_subtalar_angle_l
 	RTinMatrix	1
 	RT
-		-0.567127	-0.604747	0.559149	0.000000
-		0.746514	-0.090605	0.659172	0.000000
-		-0.347971	0.791247	0.502837	0.000000
+		-0.795582	-0.604747	-0.036456	0.000000
+		-0.583258	0.780811	-0.223932	0.000000
+		0.163887	-0.156893	-0.973923	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -1051,9 +1103,9 @@ segment	calcn_l_rotation_2
 	parent	calcn_l_rotation_1
 	RTinMatrix	1
 	RT
-		0.323214	0.634520	0.702080	0.000000
-		-0.891058	0.453890	0.000000	0.000000
-		-0.318667	-0.625594	0.712098	0.000000
+		0.672504	0.738677	-0.045774	0.000000
+		-0.739452	0.673209	-0.000000	0.000000
+		0.030816	0.033848	0.998952	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
 
@@ -1063,8 +1115,8 @@ segment	calcn_l_reset_axis
 	parent	calcn_l_rotation_2
 	RTinMatrix	1
 	RT
-		0.448625	-0.891058	0.068931	0.000000
-		0.880722	0.453890	0.135322	0.000000
+		0.665401	-0.739452	0.102238	0.000000
+		0.730875	0.673209	0.112298	0.000000
 		-0.151867	0.000000	0.988401	0.000000
 		0.000000	0.000000	0.000000	1.000000
 endsegment
@@ -1085,6 +1137,10 @@ segment	calcn_l
 		0.001352	0.000000	0.000000
 		0.000000	0.003767	0.000000
 		0.000000	0.000000	0.003960
+	meshfile	../../Geometry_triangle/l_foot.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.02708	1.02708	1.02708
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	L.Heel
@@ -1192,6 +1248,10 @@ segment	toes_l
 		0.000097	0.000000	0.000000
 		0.000000	0.000193	0.000000
 		0.000000	0.000000	0.000097
+	meshfile	../../Geometry_triangle/l_bofoot.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.02708	1.02708	1.02708
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -1258,6 +1318,10 @@ segment	torso_geom_2
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	../../Geometry_triangle/hat_jaw.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.07972	1.07972	1.07972
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -1270,6 +1334,10 @@ segment	torso_geom_3
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	../../Geometry_triangle/hat_skull.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.07972	1.07972	1.07972
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -1282,6 +1350,10 @@ segment	torso_geom_4
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	../../Geometry_triangle/hat_ribs.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.07972	1.07972	1.07972
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -1300,6 +1372,10 @@ segment	torso
 		1.424190	0.000000	0.000000
 		0.000000	0.729723	0.000000
 		0.000000	0.000000	1.382560
+	meshfile	../../Geometry_triangle/hat_spine.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.07972	1.07972	1.07972
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	Sternum

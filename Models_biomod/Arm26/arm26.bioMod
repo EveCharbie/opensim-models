@@ -1,7 +1,7 @@
 version 4
 
 
-// File extracted from /home/charbie/Documents/Programmation/biobuddy/external/opensim-models/Models/Arm26/arm26.osim on the 2025-08-06 09:15
+// File extracted from /home/charbie/Documents/Programmation/biobuddy/external/opensim-models/Models/Arm26/arm26.osim on the 2025-08-06 09:37
 
 // Original file publication : Holzbaur, K.R.S., Murray, W.M., Delp, S.L. A Model of the Upper Extremity for Simulating Musculoskeletal Surgery and Analyzing Neuromuscular Control. Annals of Biomedical Engineering, vol 33, pp 829840, 2005
 
@@ -63,6 +63,10 @@ segment	base_geom_2
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/ground_spine.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -75,6 +79,10 @@ segment	base_geom_3
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/ground_skull.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -87,6 +95,10 @@ segment	base_geom_4
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/ground_jaw.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -99,6 +111,10 @@ segment	base_geom_5
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/ground_r_clavicle.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -111,6 +127,10 @@ segment	base_geom_6
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/ground_r_scapula.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -129,6 +149,10 @@ segment	base
 		0.000000	0.000000	0.000000
 		0.000000	0.000000	0.000000
 		0.000000	0.000000	0.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/ground_ribs.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	r_acromion
@@ -230,6 +254,10 @@ segment	r_humerus
 		0.014810	0.000000	0.000000
 		0.000000	0.004551	0.000000
 		0.000000	0.000000	0.013193
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_humerus.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	r_humerus_epicondyle
@@ -325,6 +353,10 @@ segment	r_ulna_radius_hand_geom_2
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_radius.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -337,6 +369,10 @@ segment	r_ulna_radius_hand_geom_3
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_lunate.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -349,6 +385,10 @@ segment	r_ulna_radius_hand_geom_4
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_scaphoid.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -361,6 +401,10 @@ segment	r_ulna_radius_hand_geom_5
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_pisiform.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -373,6 +417,10 @@ segment	r_ulna_radius_hand_geom_6
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_triquetrum.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -385,6 +433,10 @@ segment	r_ulna_radius_hand_geom_7
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_capitate.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -397,6 +449,10 @@ segment	r_ulna_radius_hand_geom_8
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_trapezium.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -409,6 +465,10 @@ segment	r_ulna_radius_hand_geom_9
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_trapezoid.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -421,6 +481,10 @@ segment	r_ulna_radius_hand_geom_10
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_hamate.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -433,6 +497,10 @@ segment	r_ulna_radius_hand_geom_11
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_1mc.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -445,6 +513,10 @@ segment	r_ulna_radius_hand_geom_12
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_2mc.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -457,6 +529,10 @@ segment	r_ulna_radius_hand_geom_13
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_3mc.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -469,6 +545,10 @@ segment	r_ulna_radius_hand_geom_14
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_4mc.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -481,6 +561,10 @@ segment	r_ulna_radius_hand_geom_15
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_5mc.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -493,6 +577,10 @@ segment	r_ulna_radius_hand_geom_16
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_thumbprox.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -505,6 +593,10 @@ segment	r_ulna_radius_hand_geom_17
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_thumbdist.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -517,6 +609,10 @@ segment	r_ulna_radius_hand_geom_18
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_2proxph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -529,6 +625,10 @@ segment	r_ulna_radius_hand_geom_19
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_2midph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -541,6 +641,10 @@ segment	r_ulna_radius_hand_geom_20
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_2distph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -553,6 +657,10 @@ segment	r_ulna_radius_hand_geom_21
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_3proxph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -565,6 +673,10 @@ segment	r_ulna_radius_hand_geom_22
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_3midph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -577,6 +689,10 @@ segment	r_ulna_radius_hand_geom_23
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_3distph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -589,6 +705,10 @@ segment	r_ulna_radius_hand_geom_24
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_4proxph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -601,6 +721,10 @@ segment	r_ulna_radius_hand_geom_25
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_4midph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -613,6 +737,10 @@ segment	r_ulna_radius_hand_geom_26
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_4distph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -625,6 +753,10 @@ segment	r_ulna_radius_hand_geom_27
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_5proxph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -637,6 +769,10 @@ segment	r_ulna_radius_hand_geom_28
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_5midph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -649,6 +785,10 @@ segment	r_ulna_radius_hand_geom_29
 		0.000000	1.000000	0.000000	0.000000
 		0.000000	0.000000	1.000000	0.000000
 		0.000000	0.000000	0.000000	1.000000
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_5distph.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 
@@ -667,6 +807,10 @@ segment	r_ulna_radius_hand
 		0.019281	0.000000	0.000000
 		0.000000	0.001571	0.000000
 		0.000000	0.000000	0.020062
+	meshfile	/home/charbie/Documents/Programmation/biobuddy/examples/models/Geometry_cleaned/arm_r_ulna.vtp
+	meshcolor	1.0	1.0	1.0
+	meshscale	1.0	1.0	1.0
+	meshrt	0.0	0.0	0.0	xyz	0.0	0.0	0.0
 endsegment
 
 marker	r_radius_styloid
