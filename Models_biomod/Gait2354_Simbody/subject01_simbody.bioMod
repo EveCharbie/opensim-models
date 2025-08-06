@@ -1,0 +1,3612 @@
+version 4
+
+
+// File extracted from /home/charbie/Documents/Programmation/biobuddy/external/opensim-models/Models/Gait2354_Simbody/subject01_simbody.osim on the 2025-08-06 09:15
+
+// Original file publication : Delp, S.L., Loan, J.P., Hoy, M.G., Zajac, F.E., Topp E.L., Rosen, J.M.: An interactive graphics-based model of the lower extremity to study orthopaedic surgical procedures, IEEE Transactions on Biomedical Engineering, vol. 37, pp. 757-767, 1990. Yamaguchi G.T., Zajac F.E.: A planar model of the knee joint to characterize the knee extensor mechanism." J . Biomecl7. vol. 21. pp. 1-10. 1989. Anderson F.C., Pandy M.G.: A dynamic optimization solution for vertical jumping in three dimensions. Computer Methods in Biomechanics and Biomedical Engineering 2:201-231, 1999. Anderson F.C., Pandy M.G.: Dynamic optimization of human walking. Journal of Biomechanical Engineering 123:381-390, 2001.
+
+// Original file credit : Delp S.L., Loan J.P., Hoy M.G., Zajac F.E., Topp E.L., Rosen J.M., Thelen D.G., Anderson F.C., Seth A. Notes: 3D, 23 DOF gait model created by D.G. Thelen, Univ. of Wisconsin-Madison, and Ajay Seth, Frank C. Anderson, and Scott L. Delp, Stanford University. Lower extremity joint defintions based on Delp et al. (1990). Low back joint and anthropometry based on Anderson and Pandy (1999, 2001). Planar knee model of Yamaguchi and Zajac (1989). Seth replaced tibia translation constraints with a CustomJoint for the knee and removed the patella to eliminate all kinematic constraints; insertions of the quadrucepts are handled with moving points in the tibia frame as defined by Delp 1990. Number of muscles was reduced by Anderson to improve simulation speed for demonstrations and is not intended to be used in research. License: Creative Commons (CCBY 3.0). You are free to distribute, remix, tweak, and build upon this work, even commercially, as long as you credit us for the original creation. http://creativecommons.org/licenses/by/3.0/ More Information: http://simtk-confluence.stanford.edu:8080/display/OpenSim/Gait+2392+and+2354+Models
+
+// Force units : N
+
+// Length units : meters
+
+
+gravity	0.0	-9.80665	0.0
+
+
+// --------------------------------------------------------------
+// SEGMENTS
+// --------------------------------------------------------------
+
+segment	root
+	parent	base
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	ground
+	parent	root
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	pelvis_parent_offset
+	parent	ground
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	pelvis_translation
+	parent	pelvis_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	translations	xyz
+	rangesQ 
+		-5.000000	5.000000
+		-1.000000	2.000000
+		-3.000000	3.000000
+
+endsegment
+
+
+
+segment	pelvis_rotation_transform
+	parent	pelvis_translation
+	RTinMatrix	1
+	RT
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	xyz
+	rangesQ 
+		-1.570796	1.570796
+		-1.570796	1.570796
+		-1.570796	1.570796
+
+endsegment
+
+
+
+segment	pelvis_reset_axis
+	parent	pelvis_rotation_transform
+	RTinMatrix	1
+	RT
+		0.000000	0.000000	1.000000	0.000000
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	pelvis_geom_2
+	parent	pelvis_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	pelvis_geom_3
+	parent	pelvis_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	pelvis
+	parent	pelvis_geom_3
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	11.37517129
+	CenterOfMass	-0.072438	0.000000	0.000000
+	inertia
+		0.099293	0.000000	0.000000
+		0.000000	0.084128	0.000000
+		0.000000	0.000000	0.055925
+endsegment
+
+marker	R.ASIS
+	parent	pelvis
+	position	0.02289890	0.03586240	0.13011600
+	technical	1
+	anatomical	0
+endmarker
+marker	L.ASIS
+	parent	pelvis
+	position	0.02913300	0.02765900	-0.13189400
+	technical	1
+	anatomical	0
+endmarker
+marker	V.Sacral
+	parent	pelvis
+	position	-0.17209100	0.04000280	0.00619841
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+segment	femur_r_parent_offset
+	parent	pelvis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.072438
+		0.000000	1.000000	0.000000	-0.067725
+		0.000000	0.000000	1.000000	0.085552
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	femur_r_translation
+	parent	femur_r_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	femur_r_rotation_transform
+	parent	femur_r_translation
+	RTinMatrix	1
+	RT
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	xyz
+	rangesQ 
+		-2.094395	2.094395
+		-2.094395	2.094395
+		-2.094395	2.094395
+
+endsegment
+
+
+
+segment	femur_r_reset_axis
+	parent	femur_r_rotation_transform
+	RTinMatrix	1
+	RT
+		0.000000	0.000000	1.000000	0.000000
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	femur_r
+	parent	femur_r_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	8.98403823
+	CenterOfMass	0.000000	-0.195031	0.000000
+	inertia
+		0.129331	0.000000	0.000000
+		0.000000	0.033902	0.000000
+		0.000000	0.000000	0.136382
+endsegment
+
+marker	R.Thigh.Upper
+	parent	femur_r
+	position	0.05071160	-0.22008100	0.08838550
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Thigh.Front
+	parent	femur_r
+	position	0.10790200	-0.28174700	-0.00690116
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Thigh.Rear
+	parent	femur_r
+	position	0.03951090	-0.34091500	0.07895430
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Knee.Lat
+	parent	femur_r
+	position	-0.00058639	-0.42623200	0.06054100
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Knee.Med
+	parent	femur_r
+	position	-0.00243027	-0.44290800	-0.06074820
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+segment	tibia_r_parent_offset
+	parent	femur_r
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	tibia_r_translation
+	parent	tibia_r_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	translations	xy
+	rangesQ 
+		-2.094395	0.174533
+		-2.094395	0.174533
+
+endsegment
+
+
+
+segment	tibia_r_rotation_transform
+	parent	tibia_r_translation
+	RTinMatrix	1
+	RT
+		0.000000	0.000000	-1.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	x
+	rangesQ 
+		-2.094395	0.174533
+
+endsegment
+
+
+
+segment	tibia_r_reset_axis
+	parent	tibia_r_rotation_transform
+	RTinMatrix	1
+	RT
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		-1.000000	0.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	tibia_r_geom_2
+	parent	tibia_r_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	tibia_r
+	parent	tibia_r_geom_2
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	3.5810009
+	CenterOfMass	0.000000	-0.184557	0.000000
+	inertia
+		0.048680	0.000000	0.000000
+		0.000000	0.004926	0.000000
+		0.000000	0.000000	0.049356
+endsegment
+
+marker	R.Shank.Upper
+	parent	tibia_r
+	position	-0.02331390	-0.06036130	0.07073290
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Shank.Front
+	parent	tibia_r
+	position	0.05167530	-0.09542990	0.01630450
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Shank.Rear
+	parent	tibia_r
+	position	-0.00738162	-0.14552600	0.08000290
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Ankle.Lat
+	parent	tibia_r
+	position	-0.00490540	-0.43084300	0.05492060
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Ankle.Med
+	parent	tibia_r
+	position	0.00286263	-0.41632700	-0.03432510
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+segment	talus_r_parent_offset
+	parent	tibia_r
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	-0.425065
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	talus_r_translation
+	parent	talus_r_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	talus_r_ankle_angle_r
+	parent	talus_r_translation
+	RTinMatrix	1
+	RT
+		-0.105014	0.668795	-0.735993	0.000000
+		-0.174022	0.716307	0.675737	0.000000
+		0.979126	0.199041	0.041163	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	x
+	rangesQ 
+		-1.570796	1.570796
+
+endsegment
+
+
+
+segment	talus_r_rotation_1
+	parent	talus_r_ankle_angle_r
+	RTinMatrix	1
+	RT
+		0.711036	-0.174022	0.681281	0.000000
+		0.566145	0.716307	-0.407902	0.000000
+		-0.417022	0.675737	0.607842	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	talus_r_rotation_2
+	parent	talus_r_rotation_1
+	RTinMatrix	1
+	RT
+		-0.506009	0.515089	0.691837	0.000000
+		0.713366	0.700792	0.000000	0.000000
+		-0.484834	0.493533	-0.722054	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	talus_r_reset_axis
+	parent	talus_r_rotation_2
+	RTinMatrix	1
+	RT
+		0.074733	0.713366	-0.696795	0.000000
+		-0.076074	0.700792	0.709298	0.000000
+		0.994298	-0.000000	0.106641	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	talus_r
+	parent	talus_r_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	0.09658802
+	CenterOfMass	0.000000	0.000000	0.000000
+	inertia
+		0.000966	0.000000	0.000000
+		0.000000	0.000966	0.000000
+		0.000000	0.000000	0.000966
+endsegment
+
+
+
+segment	calcn_r_parent_offset
+	parent	talus_r
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.054329
+		0.000000	1.000000	0.000000	-0.046731
+		0.000000	0.000000	1.000000	0.008823
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	calcn_r_translation
+	parent	calcn_r_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	calcn_r_subtalar_angle_r
+	parent	calcn_r_translation
+	RTinMatrix	1
+	RT
+		0.787180	-0.230904	0.571867	0.000000
+		0.604747	0.470852	-0.642323	0.000000
+		-0.120949	0.851459	0.510284	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	x
+	rangesQ 
+		-1.570796	1.570796
+
+endsegment
+
+
+
+segment	calcn_r_rotation_1
+	parent	calcn_r_subtalar_angle_r
+	RTinMatrix	1
+	RT
+		0.537291	0.604747	-0.587876	0.000000
+		0.354125	0.470852	0.808018	0.000000
+		0.765450	-0.642323	0.038828	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	calcn_r_rotation_2
+	parent	calcn_r_rotation_1
+	RTinMatrix	1
+	RT
+		-0.364298	0.567820	-0.738151	0.000000
+		0.841669	0.539993	0.000000	0.000000
+		0.398597	-0.621279	-0.674635	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	calcn_r_reset_axis
+	parent	calcn_r_rotation_2
+	RTinMatrix	1
+	RT
+		-0.533730	0.841669	0.082007	0.000000
+		0.831907	0.539993	-0.127822	0.000000
+		-0.151867	0.000000	-0.988401	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	calcn_r
+	parent	calcn_r_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	1.20735027
+	CenterOfMass	0.102708	0.030812	0.000000
+	inertia
+		0.001352	0.000000	0.000000
+		0.000000	0.003767	0.000000
+		0.000000	0.000000	0.003960
+endsegment
+
+marker	R.Heel
+	parent	calcn_r
+	position	-0.02048190	0.01728840	-0.00503742
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Midfoot.Sup
+	parent	calcn_r
+	position	0.12270800	0.03096580	-0.04033330
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Midfoot.Lat
+	parent	calcn_r
+	position	0.11776600	0.01112900	0.06697250
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Toe.Lat
+	parent	calcn_r
+	position	0.20769300	-0.01141080	0.07606680
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Toe.Med
+	parent	calcn_r
+	position	0.20981400	0.00169803	-0.03236850
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Toe.Tip
+	parent	calcn_r
+	position	0.27073400	0.00315000	-0.00061239
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+segment	toes_r_parent_offset
+	parent	calcn_r
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.183643
+		0.000000	1.000000	0.000000	-0.002054
+		0.000000	0.000000	1.000000	0.001109
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	toes_r_translation
+	parent	toes_r_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	toes_r_rotation_transform
+	parent	toes_r_translation
+	RTinMatrix	1
+	RT
+		-0.580954	0.000000	-0.813936	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.813936	0.000000	-0.580954	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	x
+	rangesQ 
+		-1.570796	1.570796
+
+endsegment
+
+
+
+segment	toes_r_reset_axis
+	parent	toes_r_rotation_transform
+	RTinMatrix	1
+	RT
+		-0.580954	0.000000	0.813936	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		-0.813936	0.000000	-0.580954	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	toes_r
+	parent	toes_r_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	0.20920965
+	CenterOfMass	0.035537	0.006163	-0.017974
+	inertia
+		0.000097	0.000000	0.000000
+		0.000000	0.000193	0.000000
+		0.000000	0.000000	0.000097
+endsegment
+
+
+
+segment	femur_l_parent_offset
+	parent	pelvis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.072438
+		0.000000	1.000000	0.000000	-0.067725
+		0.000000	0.000000	1.000000	-0.085552
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	femur_l_translation
+	parent	femur_l_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	femur_l_rotation_transform
+	parent	femur_l_translation
+	RTinMatrix	1
+	RT
+		0.000000	-1.000000	0.000000	0.000000
+		0.000000	0.000000	-1.000000	0.000000
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	xyz
+	rangesQ 
+		-2.094395	2.094395
+		-2.094395	2.094395
+		-2.094395	2.094395
+
+endsegment
+
+
+
+segment	femur_l_reset_axis
+	parent	femur_l_rotation_transform
+	RTinMatrix	1
+	RT
+		0.000000	0.000000	1.000000	0.000000
+		-1.000000	0.000000	0.000000	0.000000
+		0.000000	-1.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	femur_l
+	parent	femur_l_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	8.98403823
+	CenterOfMass	0.000000	-0.195031	0.000000
+	inertia
+		0.129331	0.000000	0.000000
+		0.000000	0.033902	0.000000
+		0.000000	0.000000	0.136382
+endsegment
+
+marker	L.Thigh.Upper
+	parent	femur_l
+	position	0.03584430	-0.20749000	-0.09325730
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Thigh.Front
+	parent	femur_l
+	position	0.11408400	-0.24917700	-0.01757040
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Thigh.Rear
+	parent	femur_l
+	position	0.02589100	-0.31621300	-0.07785310
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Knee.Lat
+	parent	femur_l
+	position	-0.00075351	-0.44614200	-0.06229600
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Knee.Med
+	parent	femur_l
+	position	0.00047254	-0.44543200	0.05395060
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+segment	tibia_l_parent_offset
+	parent	femur_l
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	tibia_l_translation
+	parent	tibia_l_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	translations	xy
+	rangesQ 
+		-2.094395	0.174533
+		-2.094395	0.174533
+
+endsegment
+
+
+
+segment	tibia_l_rotation_transform
+	parent	tibia_l_translation
+	RTinMatrix	1
+	RT
+		0.000000	0.000000	-1.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	x
+	rangesQ 
+		-2.094395	0.174533
+
+endsegment
+
+
+
+segment	tibia_l_reset_axis
+	parent	tibia_l_rotation_transform
+	RTinMatrix	1
+	RT
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		-1.000000	0.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	tibia_l_geom_2
+	parent	tibia_l_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	tibia_l
+	parent	tibia_l_geom_2
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	3.5810009
+	CenterOfMass	0.000000	-0.184557	0.000000
+	inertia
+		0.048680	0.000000	0.000000
+		0.000000	0.004926	0.000000
+		0.000000	0.000000	0.049356
+endsegment
+
+marker	L.Shank.Upper
+	parent	tibia_l
+	position	0.00398589	-0.07161100	-0.07770860
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Shank.Front
+	parent	tibia_l
+	position	0.04814280	-0.12153600	-0.02230370
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Shank.Rear
+	parent	tibia_l
+	position	-0.01324360	-0.11473900	-0.08850720
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Ankle.Lat
+	parent	tibia_l
+	position	0.00383433	-0.42845100	-0.05443380
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Ankle.Med
+	parent	tibia_l
+	position	0.00789014	-0.40516100	0.03692530
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+segment	talus_l_parent_offset
+	parent	tibia_l
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	-0.425065
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	talus_l_translation
+	parent	talus_l_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	talus_l_ankle_angle_l
+	parent	talus_l_translation
+	RTinMatrix	1
+	RT
+		0.105014	-0.456692	0.883405	0.000000
+		0.174022	-0.866171	-0.468469	0.000000
+		0.979126	0.202928	-0.011485	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	x
+	rangesQ 
+		-1.570796	1.570796
+
+endsegment
+
+
+
+segment	talus_l_rotation_1
+	parent	talus_l_ankle_angle_l
+	RTinMatrix	1
+	RT
+		0.865635	0.174022	0.469459	0.000000
+		-0.092241	-0.866171	0.491161	0.000000
+		0.492105	-0.468469	-0.733736	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	talus_l_rotation_2
+	parent	talus_l_rotation_1
+	RTinMatrix	1
+	RT
+		-0.258504	0.840179	0.476734	0.000000
+		0.955783	0.294073	0.000000	0.000000
+		-0.140195	0.455654	-0.879048	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	talus_l_reset_axis
+	parent	talus_l_rotation_2
+	RTinMatrix	1
+	RT
+		-0.031360	0.955783	-0.292396	0.000000
+		0.101925	0.294073	0.950333	0.000000
+		0.994298	0.000000	-0.106641	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	talus_l
+	parent	talus_l_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	0.09658802
+	CenterOfMass	0.000000	0.000000	0.000000
+	inertia
+		0.000966	0.000000	0.000000
+		0.000000	0.000966	0.000000
+		0.000000	0.000000	0.000966
+endsegment
+
+
+
+segment	calcn_l_parent_offset
+	parent	talus_l
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.054329
+		0.000000	1.000000	0.000000	-0.046731
+		0.000000	0.000000	1.000000	-0.008823
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	calcn_l_translation
+	parent	calcn_l_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	calcn_l_subtalar_angle_l
+	parent	calcn_l_translation
+	RTinMatrix	1
+	RT
+		-0.787180	-0.082879	-0.611129	0.000000
+		-0.604747	-0.090605	0.791247	0.000000
+		-0.120949	0.992432	0.021201	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	x
+	rangesQ 
+		-1.570796	1.570796
+
+endsegment
+
+
+
+segment	calcn_l_rotation_1
+	parent	calcn_l_subtalar_angle_l
+	RTinMatrix	1
+	RT
+		-0.567127	-0.604747	0.559149	0.000000
+		0.746514	-0.090605	0.659172	0.000000
+		-0.347971	0.791247	0.502837	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	calcn_l_rotation_2
+	parent	calcn_l_rotation_1
+	RTinMatrix	1
+	RT
+		0.323214	0.634520	0.702080	0.000000
+		-0.891058	0.453890	0.000000	0.000000
+		-0.318667	-0.625594	0.712098	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	calcn_l_reset_axis
+	parent	calcn_l_rotation_2
+	RTinMatrix	1
+	RT
+		0.448625	-0.891058	0.068931	0.000000
+		0.880722	0.453890	0.135322	0.000000
+		-0.151867	0.000000	0.988401	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	calcn_l
+	parent	calcn_l_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	1.20735027
+	CenterOfMass	0.102708	0.030812	0.000000
+	inertia
+		0.001352	0.000000	0.000000
+		0.000000	0.003767	0.000000
+		0.000000	0.000000	0.003960
+endsegment
+
+marker	L.Heel
+	parent	calcn_l
+	position	-0.02261920	0.02686420	0.00786184
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Midfoot.Sup
+	parent	calcn_l
+	position	0.14970600	0.03070450	0.03426060
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Midfoot.Lat
+	parent	calcn_l
+	position	0.13132100	0.03057260	-0.06436310
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Toe.Lat
+	parent	calcn_l
+	position	0.19474500	0.00778412	-0.07483870
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Toe.Med
+	parent	calcn_l
+	position	0.21178700	0.00788615	0.02731640
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Toe.Tip
+	parent	calcn_l
+	position	0.26097800	0.00906903	0.00201311
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+segment	toes_l_parent_offset
+	parent	calcn_l
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.183643
+		0.000000	1.000000	0.000000	-0.002054
+		0.000000	0.000000	1.000000	-0.001109
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	toes_l_translation
+	parent	toes_l_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	toes_l_rotation_transform
+	parent	toes_l_translation
+	RTinMatrix	1
+	RT
+		0.580954	0.000000	-0.813936	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.813936	0.000000	0.580954	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	x
+	rangesQ 
+		-1.570796	1.570796
+
+endsegment
+
+
+
+segment	toes_l_reset_axis
+	parent	toes_l_rotation_transform
+	RTinMatrix	1
+	RT
+		0.580954	0.000000	0.813936	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		-0.813936	0.000000	0.580954	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	toes_l
+	parent	toes_l_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	0.20920965
+	CenterOfMass	0.035537	0.006163	0.017974
+	inertia
+		0.000097	0.000000	0.000000
+		0.000000	0.000193	0.000000
+		0.000000	0.000000	0.000097
+endsegment
+
+
+
+segment	torso_parent_offset
+	parent	pelvis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.103175
+		0.000000	1.000000	0.000000	0.083503
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	torso_translation
+	parent	torso_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	torso_rotation_transform
+	parent	torso_translation
+	RTinMatrix	1
+	RT
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	xyz
+	rangesQ 
+		-1.570796	1.570796
+		-1.570796	1.570796
+		-1.570796	1.570796
+
+endsegment
+
+
+
+segment	torso_reset_axis
+	parent	torso_rotation_transform
+	RTinMatrix	1
+	RT
+		0.000000	0.000000	1.000000	0.000000
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	torso_geom_2
+	parent	torso_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	torso_geom_3
+	parent	torso_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	torso_geom_4
+	parent	torso_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	torso
+	parent	torso_geom_4
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	33.06845457
+	CenterOfMass	-0.032392	0.345510	0.000000
+	inertia
+		1.424190	0.000000	0.000000
+		0.000000	0.729723	0.000000
+		0.000000	0.000000	1.382560
+endsegment
+
+marker	Sternum
+	parent	torso
+	position	0.10360600	0.31243900	0.00000106
+	technical	1
+	anatomical	0
+endmarker
+marker	R.Acromium
+	parent	torso
+	position	-0.02487170	0.42644400	0.16858500
+	technical	1
+	anatomical	0
+endmarker
+marker	L.Acromium
+	parent	torso
+	position	-0.02200880	0.44078900	-0.17197200
+	technical	1
+	anatomical	0
+endmarker
+marker	Top.Head
+	parent	torso
+	position	0.05951340	0.69959800	0.01050170
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+// --------------------------------------------------------------
+// MUSCLES
+// --------------------------------------------------------------
+
+musclegroup	pelvis_to_femur_r
+	OriginParent	pelvis
+	InsertionParent	femur_r
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	glut_med1_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.0418	0.0311	0.1239
+	insertionposition	-0.025	-0.0134	0.0637
+	optimallength	0.0564
+	maximalforce	1119.0000
+	tendonslacklength	0.0822
+	pennationangle	0.1396
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	glut_med2_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.0876	0.0456	0.0785
+	insertionposition	-0.0296	-0.0067	0.0605
+	optimallength	0.0891
+	maximalforce	873.0000
+	tendonslacklength	0.0559
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	glut_med3_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.1253	0.0108	0.0664
+	insertionposition	-0.0354	-0.0054	0.0594
+	optimallength	0.0685
+	maximalforce	1000.0000
+	tendonslacklength	0.0562
+	pennationangle	0.3316
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	add_mag2_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.0851	-0.1221	0.0316
+	insertionposition	0.0062	-0.2621	0.026
+	optimallength	0.1410
+	maximalforce	2343.0000
+	tendonslacklength	0.1398
+	pennationangle	0.0524
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	pect_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.0442	-0.0787	0.0462
+	insertionposition	-0.014	-0.0943	0.029
+	optimallength	0.1117
+	maximalforce	266.0000
+	tendonslacklength	0.0368
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	glut_max1_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.1224	0.0627	0.0717
+	insertionposition	-0.0318	-0.0649	0.0539
+	optimallength	0.1516
+	maximalforce	573.0000
+	tendonslacklength	0.1334
+	pennationangle	0.0873
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	glut_max1_r-P2
+	parent	pelvis
+	muscle	glut_max1_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.132273	0.001229	0.090778
+endviapoint
+
+
+viapoint	glut_max1_r-P3
+	parent	femur_r
+	muscle	glut_max1_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.052429	-0.028452	0.044972
+endviapoint
+
+
+muscle	glut_max2_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.1382	0.018	0.0577
+	insertionposition	-0.0179	-0.1166	0.0481
+	optimallength	0.1594
+	maximalforce	819.0000
+	tendonslacklength	0.1377
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	glut_max2_r-P2
+	parent	pelvis
+	muscle	glut_max2_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.140982	-0.053278	0.093646
+endviapoint
+
+
+viapoint	glut_max2_r-P3
+	parent	femur_r
+	muscle	glut_max2_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.048872	-0.060804	0.033614
+endviapoint
+
+
+muscle	glut_max3_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.1594	-0.0322	0.0059
+	insertionposition	-0.0069	-0.1628	0.0472
+	optimallength	0.1563
+	maximalforce	552.0000
+	tendonslacklength	0.1574
+	pennationangle	0.0873
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	glut_max3_r-P2
+	parent	pelvis
+	muscle	glut_max3_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.156658	-0.107786	0.04129
+endviapoint
+
+
+viapoint	glut_max3_r-P3
+	parent	femur_r
+	muscle	glut_max3_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.034302	-0.119428	0.015488
+endviapoint
+
+
+muscle	iliacus_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.0691	0.0374	0.0875
+	insertionposition	-0.0221	-0.0712	0.0148
+	optimallength	0.1062
+	maximalforce	1073.0000
+	tendonslacklength	0.1062
+	pennationangle	0.1222
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	iliacus_r-P2
+	parent	pelvis
+	muscle	iliacus_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.026434	-0.056352	0.083093
+endviapoint
+
+
+viapoint	iliacus_r-P3
+	parent	pelvis
+	muscle	iliacus_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.029508	-0.082478	0.083606
+endviapoint
+
+
+viapoint	iliacus_r-P4
+	parent	femur_r
+	muscle	iliacus_r
+	musclegroup	pelvis_to_femur_r
+	position	0.00195	-0.062295	0.006539
+endviapoint
+
+
+muscle	psoas_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.0663	0.0909	0.0296
+	insertionposition	-0.0216	-0.0685	0.0119
+	optimallength	0.1052
+	maximalforce	1113.0000
+	tendonslacklength	0.1683
+	pennationangle	0.1396
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	psoas_r-P2
+	parent	pelvis
+	muscle	psoas_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.024385	-0.058401	0.077765
+endviapoint
+
+
+viapoint	psoas_r-P3
+	parent	pelvis
+	muscle	psoas_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.029508	-0.082478	0.083606
+endviapoint
+
+
+viapoint	psoas_r-P4
+	parent	femur_r
+	muscle	psoas_r
+	musclegroup	pelvis_to_femur_r
+	position	0.001836	-0.058165	0.00436
+endviapoint
+
+
+muscle	quad_fem_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.1171	-0.1179	0.0533
+	insertionposition	-0.0437	-0.0412	0.042
+	optimallength	0.0581
+	maximalforce	381.0000
+	tendonslacklength	0.0258
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	gem_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.1161	-0.084	0.0732
+	insertionposition	-0.0163	-0.0038	0.0508
+	optimallength	0.0261
+	maximalforce	164.0000
+	tendonslacklength	0.0424
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	peri_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_r
+	originposition	-0.143	0.0003	0.0241
+	insertionposition	-0.017	-0.0041	0.0501
+	optimallength	0.0273
+	maximalforce	444.0000
+	tendonslacklength	0.1209
+	pennationangle	0.1745
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	peri_r-P2
+	parent	pelvis
+	muscle	peri_r
+	musclegroup	pelvis_to_femur_r
+	position	-0.122232	-0.028278	0.067315
+endviapoint
+
+
+
+musclegroup	pelvis_to_tibia_r
+	OriginParent	pelvis
+	InsertionParent	tibia_r
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	bifemlh_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_tibia_r
+	originposition	-0.1291	-0.1051	0.0711
+	insertionposition	-0.0231	-0.0557	0.0339
+	optimallength	0.1236
+	maximalforce	2700.0000
+	tendonslacklength	0.3698
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	bifemlh_r-P2
+	parent	tibia_r
+	muscle	bifemlh_r
+	musclegroup	pelvis_to_tibia_r
+	position	-0.029754	-0.035587	0.029092
+endviapoint
+
+
+muscle	sar_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_tibia_r
+	originposition	-0.0157	-0.0013	0.1273
+	insertionposition	0.024	-0.083	-0.0249
+	optimallength	0.5742
+	maximalforce	156.0000
+	tendonslacklength	0.1104
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	sar_r-P2
+	parent	femur_r
+	muscle	sar_r
+	musclegroup	pelvis_to_tibia_r
+	position	-0.003442	-0.409335	-0.048299
+endviapoint
+
+
+viapoint	sar_r-P3
+	parent	tibia_r
+	muscle	sar_r
+	musclegroup	pelvis_to_tibia_r
+	position	-0.005536	-0.041419	-0.039442
+endviapoint
+
+
+viapoint	sar_r-P4
+	parent	tibia_r
+	muscle	sar_r
+	musclegroup	pelvis_to_tibia_r
+	position	0.005931	-0.058224	-0.03786
+endviapoint
+
+
+muscle	tfl_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_tibia_r
+	originposition	-0.0319	0.0219	0.1272
+	insertionposition	0.0059	-0.0481	0.0294
+	optimallength	0.1060
+	maximalforce	233.0000
+	tendonslacklength	0.4744
+	pennationangle	0.0524
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	tfl_r-P2
+	parent	femur_r
+	muscle	tfl_r
+	musclegroup	pelvis_to_tibia_r
+	position	0.033729	-0.11415	0.06849
+endviapoint
+
+
+viapoint	tfl_r-P3
+	parent	femur_r
+	muscle	tfl_r
+	musclegroup	pelvis_to_tibia_r
+	position	0.006195	-0.464517	0.040956
+endviapoint
+
+
+muscle	grac_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_tibia_r
+	originposition	-0.0758	-0.1216	0.0286
+	insertionposition	0.0059	-0.0826	-0.0225
+	optimallength	0.3966
+	maximalforce	162.0000
+	tendonslacklength	0.1420
+	pennationangle	0.0524
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	grac_r-P2
+	parent	tibia_r
+	muscle	grac_r
+	musclegroup	pelvis_to_tibia_r
+	position	-0.026265	-0.031534	-0.037307
+endviapoint
+
+
+viapoint	grac_r-P3
+	parent	tibia_r
+	muscle	grac_r
+	musclegroup	pelvis_to_tibia_r
+	position	-0.019207	-0.050939	-0.035389
+endviapoint
+
+
+
+musclegroup	femur_r_to_tibia_r
+	OriginParent	femur_r
+	InsertionParent	tibia_r
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	bifemsh_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	femur_r_to_tibia_r
+	originposition	0.0057	-0.2422	0.0268
+	insertionposition	-0.0231	-0.0557	0.0339
+	optimallength	0.1914
+	maximalforce	804.0000
+	tendonslacklength	0.0985
+	pennationangle	0.4014
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	bifemsh_r-P2
+	parent	tibia_r
+	muscle	bifemsh_r
+	musclegroup	femur_r_to_tibia_r
+	position	-0.029754	-0.035587	0.029092
+endviapoint
+
+
+
+musclegroup	femur_r_to_calcn_r
+	OriginParent	femur_r
+	InsertionParent	calcn_r
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	med_gas_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	femur_r_to_calcn_r
+	originposition	-0.0218	-0.4508	-0.027
+	insertionposition	0.0	0.0318	-0.0054
+	optimallength	0.0901
+	maximalforce	2500.0000
+	tendonslacklength	0.3605
+	pennationangle	0.2967
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	med_gas_r-P2
+	parent	femur_r
+	muscle	med_gas_r
+	musclegroup	femur_r_to_calcn_r
+	position	-0.034417	-0.46142	-0.029599
+endviapoint
+
+
+
+musclegroup	tibia_r_to_calcn_r
+	OriginParent	tibia_r
+	InsertionParent	calcn_r
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	soleus_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	tibia_r_to_calcn_r
+	originposition	-0.0024	-0.1515	0.007
+	insertionposition	0.0	0.0318	-0.0054
+	optimallength	0.0503
+	maximalforce	4000.0000
+	tendonslacklength	0.2514
+	pennationangle	0.4363
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	tib_post_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	tibia_r_to_calcn_r
+	originposition	-0.0093	-0.1333	0.0019
+	insertionposition	0.0793	0.0163	-0.0289
+	optimallength	0.0311
+	maximalforce	3600.0000
+	tendonslacklength	0.3108
+	pennationangle	0.2094
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	tib_post_r-P2
+	parent	tibia_r
+	muscle	tib_post_r
+	musclegroup	tibia_r_to_calcn_r
+	position	-0.014235	-0.400451	-0.022637
+endviapoint
+
+
+viapoint	tib_post_r-P3
+	parent	calcn_r
+	muscle	tib_post_r
+	musclegroup	tibia_r_to_calcn_r
+	position	0.042829	0.034305	-0.029375
+endviapoint
+
+
+muscle	tib_ant_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	tibia_r_to_calcn_r
+	originposition	0.0177	-0.1605	0.0114
+	insertionposition	0.1198	0.0183	-0.0313
+	optimallength	0.0979
+	maximalforce	3000.0000
+	tendonslacklength	0.2228
+	pennationangle	0.0873
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	tib_ant_r-P2
+	parent	tibia_r
+	muscle	tib_ant_r
+	musclegroup	tibia_r_to_calcn_r
+	position	0.032522	-0.390565	-0.017497
+endviapoint
+
+
+
+musclegroup	pelvis_to_femur_l
+	OriginParent	pelvis
+	InsertionParent	femur_l
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	glut_med1_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.0418	0.0311	-0.1239
+	insertionposition	-0.025	-0.0134	-0.0637
+	optimallength	0.0564
+	maximalforce	1119.0000
+	tendonslacklength	0.0822
+	pennationangle	0.1396
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	glut_med2_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.0876	0.0456	-0.0785
+	insertionposition	-0.0296	-0.0067	-0.0605
+	optimallength	0.0891
+	maximalforce	873.0000
+	tendonslacklength	0.0559
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	glut_med3_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.1253	0.0108	-0.0664
+	insertionposition	-0.0354	-0.0054	-0.0594
+	optimallength	0.0685
+	maximalforce	1000.0000
+	tendonslacklength	0.0562
+	pennationangle	0.3316
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	add_mag2_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.0851	-0.1221	-0.0316
+	insertionposition	0.0062	-0.2621	-0.026
+	optimallength	0.1410
+	maximalforce	2343.0000
+	tendonslacklength	0.1398
+	pennationangle	0.0524
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	pect_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.0442	-0.0787	-0.0462
+	insertionposition	-0.014	-0.0943	-0.029
+	optimallength	0.1117
+	maximalforce	266.0000
+	tendonslacklength	0.0368
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	glut_max1_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.1224	0.0627	-0.0717
+	insertionposition	-0.0318	-0.0649	-0.0539
+	optimallength	0.1516
+	maximalforce	573.0000
+	tendonslacklength	0.1334
+	pennationangle	0.0873
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	glut_max1_l-P2
+	parent	pelvis
+	muscle	glut_max1_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.132273	0.001229	-0.090778
+endviapoint
+
+
+viapoint	glut_max1_l-P3
+	parent	femur_l
+	muscle	glut_max1_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.052429	-0.028452	-0.044972
+endviapoint
+
+
+muscle	glut_max2_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.1382	0.018	-0.0577
+	insertionposition	-0.0179	-0.1166	-0.0481
+	optimallength	0.1594
+	maximalforce	819.0000
+	tendonslacklength	0.1377
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	glut_max2_l-P2
+	parent	pelvis
+	muscle	glut_max2_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.140982	-0.053278	-0.093646
+endviapoint
+
+
+viapoint	glut_max2_l-P3
+	parent	femur_l
+	muscle	glut_max2_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.048872	-0.060804	-0.033614
+endviapoint
+
+
+muscle	glut_max3_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.1594	-0.0322	-0.0059
+	insertionposition	-0.0069	-0.1628	-0.0472
+	optimallength	0.1563
+	maximalforce	552.0000
+	tendonslacklength	0.1574
+	pennationangle	0.0873
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	glut_max3_l-P2
+	parent	pelvis
+	muscle	glut_max3_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.156658	-0.107786	-0.04129
+endviapoint
+
+
+viapoint	glut_max3_l-P3
+	parent	femur_l
+	muscle	glut_max3_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.034302	-0.119428	-0.015488
+endviapoint
+
+
+muscle	iliacus_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.0691	0.0374	-0.0875
+	insertionposition	-0.0221	-0.0712	-0.0148
+	optimallength	0.1062
+	maximalforce	1073.0000
+	tendonslacklength	0.1062
+	pennationangle	0.1222
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	iliacus_l-P2
+	parent	pelvis
+	muscle	iliacus_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.026434	-0.056352	-0.083093
+endviapoint
+
+
+viapoint	iliacus_l-P3
+	parent	pelvis
+	muscle	iliacus_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.029508	-0.082478	-0.083606
+endviapoint
+
+
+viapoint	iliacus_l-P4
+	parent	femur_l
+	muscle	iliacus_l
+	musclegroup	pelvis_to_femur_l
+	position	0.00195	-0.062295	-0.006539
+endviapoint
+
+
+muscle	psoas_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.0663	0.0909	-0.0296
+	insertionposition	-0.0216	-0.0685	-0.0119
+	optimallength	0.1052
+	maximalforce	1113.0000
+	tendonslacklength	0.1683
+	pennationangle	0.1396
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	psoas_l-P2
+	parent	pelvis
+	muscle	psoas_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.024385	-0.058401	-0.077765
+endviapoint
+
+
+viapoint	psoas_l-P3
+	parent	pelvis
+	muscle	psoas_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.029508	-0.082478	-0.083606
+endviapoint
+
+
+viapoint	psoas_l-P4
+	parent	femur_l
+	muscle	psoas_l
+	musclegroup	pelvis_to_femur_l
+	position	0.001836	-0.058165	-0.00436
+endviapoint
+
+
+muscle	quad_fem_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.1171	-0.1179	-0.0533
+	insertionposition	-0.0437	-0.0412	-0.042
+	optimallength	0.0581
+	maximalforce	381.0000
+	tendonslacklength	0.0258
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	gem_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.1161	-0.084	-0.0732
+	insertionposition	-0.0163	-0.0038	-0.0508
+	optimallength	0.0261
+	maximalforce	164.0000
+	tendonslacklength	0.0424
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	peri_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_femur_l
+	originposition	-0.143	0.0003	-0.0241
+	insertionposition	-0.017	-0.0041	-0.0501
+	optimallength	0.0273
+	maximalforce	444.0000
+	tendonslacklength	0.1209
+	pennationangle	0.1745
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	peri_l-P2
+	parent	pelvis
+	muscle	peri_l
+	musclegroup	pelvis_to_femur_l
+	position	-0.122232	-0.028278	-0.067315
+endviapoint
+
+
+
+musclegroup	pelvis_to_tibia_l
+	OriginParent	pelvis
+	InsertionParent	tibia_l
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	bifemlh_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_tibia_l
+	originposition	-0.1291	-0.1051	-0.0711
+	insertionposition	-0.0231	-0.0557	-0.0339
+	optimallength	0.1236
+	maximalforce	2700.0000
+	tendonslacklength	0.3698
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	bifemlh_l-P2
+	parent	tibia_l
+	muscle	bifemlh_l
+	musclegroup	pelvis_to_tibia_l
+	position	-0.029754	-0.035587	-0.029092
+endviapoint
+
+
+muscle	sar_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_tibia_l
+	originposition	-0.0157	-0.0013	-0.1273
+	insertionposition	0.024	-0.083	0.0249
+	optimallength	0.5742
+	maximalforce	156.0000
+	tendonslacklength	0.1104
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	sar_l-P2
+	parent	femur_l
+	muscle	sar_l
+	musclegroup	pelvis_to_tibia_l
+	position	-0.003442	-0.409335	0.048299
+endviapoint
+
+
+viapoint	sar_l-P3
+	parent	tibia_l
+	muscle	sar_l
+	musclegroup	pelvis_to_tibia_l
+	position	-0.005536	-0.041419	0.039442
+endviapoint
+
+
+viapoint	sar_l-P4
+	parent	tibia_l
+	muscle	sar_l
+	musclegroup	pelvis_to_tibia_l
+	position	0.005931	-0.058224	0.03786
+endviapoint
+
+
+muscle	tfl_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_tibia_l
+	originposition	-0.0319	0.0219	-0.1272
+	insertionposition	0.0059	-0.0481	-0.0294
+	optimallength	0.1060
+	maximalforce	233.0000
+	tendonslacklength	0.4744
+	pennationangle	0.0524
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	tfl_l-P2
+	parent	femur_l
+	muscle	tfl_l
+	musclegroup	pelvis_to_tibia_l
+	position	0.033729	-0.11415	-0.06849
+endviapoint
+
+
+viapoint	tfl_l-P3
+	parent	femur_l
+	muscle	tfl_l
+	musclegroup	pelvis_to_tibia_l
+	position	0.006195	-0.464517	-0.040956
+endviapoint
+
+
+muscle	grac_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_tibia_l
+	originposition	-0.0758	-0.1216	-0.0286
+	insertionposition	0.0059	-0.0826	0.0225
+	optimallength	0.3966
+	maximalforce	162.0000
+	tendonslacklength	0.1420
+	pennationangle	0.0524
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	grac_l-P2
+	parent	tibia_l
+	muscle	grac_l
+	musclegroup	pelvis_to_tibia_l
+	position	-0.026265	-0.031534	0.037307
+endviapoint
+
+
+viapoint	grac_l-P3
+	parent	tibia_l
+	muscle	grac_l
+	musclegroup	pelvis_to_tibia_l
+	position	-0.019207	-0.050939	0.035389
+endviapoint
+
+
+
+musclegroup	femur_l_to_tibia_l
+	OriginParent	femur_l
+	InsertionParent	tibia_l
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	bifemsh_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	femur_l_to_tibia_l
+	originposition	0.0057	-0.2422	-0.0268
+	insertionposition	-0.0231	-0.0557	-0.0339
+	optimallength	0.1914
+	maximalforce	804.0000
+	tendonslacklength	0.0985
+	pennationangle	0.4014
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	bifemsh_l-P2
+	parent	tibia_l
+	muscle	bifemsh_l
+	musclegroup	femur_l_to_tibia_l
+	position	-0.029754	-0.035587	-0.029092
+endviapoint
+
+
+
+musclegroup	femur_l_to_calcn_l
+	OriginParent	femur_l
+	InsertionParent	calcn_l
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	med_gas_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	femur_l_to_calcn_l
+	originposition	-0.0218	-0.4508	0.027
+	insertionposition	0.0	0.0318	0.0054
+	optimallength	0.0901
+	maximalforce	2500.0000
+	tendonslacklength	0.3605
+	pennationangle	0.2967
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	med_gas_l-P2
+	parent	femur_l
+	muscle	med_gas_l
+	musclegroup	femur_l_to_calcn_l
+	position	-0.034417	-0.46142	0.029599
+endviapoint
+
+
+
+musclegroup	tibia_l_to_calcn_l
+	OriginParent	tibia_l
+	InsertionParent	calcn_l
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	soleus_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	tibia_l_to_calcn_l
+	originposition	-0.0024	-0.1515	-0.007
+	insertionposition	0.0	0.0318	0.0054
+	optimallength	0.0503
+	maximalforce	4000.0000
+	tendonslacklength	0.2514
+	pennationangle	0.4363
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	tib_post_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	tibia_l_to_calcn_l
+	originposition	-0.0093	-0.1333	-0.0019
+	insertionposition	0.0793	0.0163	0.0289
+	optimallength	0.0311
+	maximalforce	3600.0000
+	tendonslacklength	0.3108
+	pennationangle	0.2094
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	tib_post_l-P2
+	parent	tibia_l
+	muscle	tib_post_l
+	musclegroup	tibia_l_to_calcn_l
+	position	-0.014235	-0.400451	0.022637
+endviapoint
+
+
+viapoint	tib_post_l-P3
+	parent	calcn_l
+	muscle	tib_post_l
+	musclegroup	tibia_l_to_calcn_l
+	position	0.042829	0.034305	0.029375
+endviapoint
+
+
+muscle	tib_ant_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	tibia_l_to_calcn_l
+	originposition	0.0177	-0.1605	-0.0114
+	insertionposition	0.1198	0.0183	0.0313
+	optimallength	0.0979
+	maximalforce	3000.0000
+	tendonslacklength	0.2228
+	pennationangle	0.0873
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	tib_ant_l-P2
+	parent	tibia_l
+	muscle	tib_ant_l
+	musclegroup	tibia_l_to_calcn_l
+	position	0.032522	-0.390565	0.017497
+endviapoint
+
+
+
+musclegroup	pelvis_to_torso
+	OriginParent	pelvis
+	InsertionParent	torso
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	ercspn_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_torso
+	originposition	-0.1434	0.045	0.0447
+	insertionposition	-0.0594	0.1188	0.026
+	optimallength	0.1279
+	maximalforce	2500.0000
+	tendonslacklength	0.0320
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	ercspn_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_torso
+	originposition	-0.1434	0.045	-0.0447
+	insertionposition	-0.0594	0.1188	-0.026
+	optimallength	0.1279
+	maximalforce	2500.0000
+	tendonslacklength	0.0320
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	intobl_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_torso
+	originposition	-0.041	0.0717	0.1185
+	insertionposition	0.0756	0.1728	0.0162
+	optimallength	0.1062
+	maximalforce	900.0000
+	tendonslacklength	0.1062
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	intobl_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_torso
+	originposition	-0.041	0.0717	-0.1185
+	insertionposition	0.0756	0.1728	-0.0162
+	optimallength	0.1062
+	maximalforce	900.0000
+	tendonslacklength	0.1062
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	extobl_r
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_torso
+	originposition	-0.0307	-0.0652	0.0102
+	insertionposition	0.0702	0.1188	0.1188
+	optimallength	0.1264
+	maximalforce	900.0000
+	tendonslacklength	0.1474
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+muscle	extobl_l
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	pelvis_to_torso
+	originposition	-0.0307	-0.0652	-0.0102
+	insertionposition	0.0702	0.1188	-0.1188
+	optimallength	0.1264
+	maximalforce	900.0000
+	tendonslacklength	0.1474
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+
+
+
+
+
+/*-------------- WARNINGS---------------
+
+
+An element FmaxTendonStrain was found in the muscle glut_med1_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_med1_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_med1_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_med1_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_med1_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_med1_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_med1_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_med1_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_med2_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_med2_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_med2_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_med2_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_med2_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_med2_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_med2_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_med2_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_med3_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_med3_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_med3_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_med3_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_med3_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_med3_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_med3_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_med3_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle bifemlh_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle bifemlh_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle bifemlh_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle bifemlh_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle bifemlh_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle bifemlh_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle bifemlh_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle bifemlh_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle bifemsh_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle bifemsh_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle bifemsh_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle bifemsh_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle bifemsh_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle bifemsh_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle bifemsh_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle bifemsh_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle sar_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle sar_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle sar_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle sar_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle sar_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle sar_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle sar_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle sar_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle add_mag2_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle add_mag2_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle add_mag2_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle add_mag2_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle add_mag2_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle add_mag2_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle add_mag2_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle add_mag2_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle tfl_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle tfl_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle tfl_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle tfl_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle tfl_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle tfl_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle tfl_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle tfl_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle pect_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle pect_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle pect_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle pect_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle pect_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle pect_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle pect_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle pect_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle grac_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle grac_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle grac_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle grac_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle grac_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle grac_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle grac_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle grac_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_max1_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_max1_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_max1_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_max1_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_max1_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_max1_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_max1_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_max1_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_max2_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_max2_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_max2_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_max2_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_max2_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_max2_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_max2_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_max2_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_max3_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_max3_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_max3_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_max3_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_max3_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_max3_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_max3_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_max3_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle iliacus_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle iliacus_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle iliacus_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle iliacus_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle iliacus_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle iliacus_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle iliacus_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle iliacus_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle psoas_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle psoas_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle psoas_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle psoas_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle psoas_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle psoas_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle psoas_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle psoas_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle quad_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle quad_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle quad_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle quad_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle quad_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle quad_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle quad_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle quad_fem_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle gem_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle gem_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle gem_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle gem_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle gem_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle gem_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle gem_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle gem_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle peri_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle peri_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle peri_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle peri_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle peri_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle peri_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle peri_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle peri_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle rect_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle rect_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle rect_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle rect_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle rect_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle rect_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle rect_fem_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle rect_fem_r, but this feature is not implemented yet so it will be ignored.
+Warning: No SimmSpline found in PathPointMovement locations. It will be ignored
+Only SimmSpline functions are supported for PathPointMovement locations.Only SimmSpline functions are supported for PathPointMovement locations.Only SimmSpline functions are supported for PathPointMovement locations.
+The muscle rect_fem_r has a conditional or moving insertion or origin, it is not implemented yet.
+
+An element FmaxTendonStrain was found in the muscle vas_int_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle vas_int_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle vas_int_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle vas_int_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle vas_int_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle vas_int_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle vas_int_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle vas_int_r, but this feature is not implemented yet so it will be ignored.
+Warning: No SimmSpline found in PathPointMovement locations. It will be ignored
+Only SimmSpline functions are supported for PathPointMovement locations.Only SimmSpline functions are supported for PathPointMovement locations.Only SimmSpline functions are supported for PathPointMovement locations.
+The muscle vas_int_r has a conditional or moving insertion or origin, it is not implemented yet.
+
+An element FmaxTendonStrain was found in the muscle med_gas_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle med_gas_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle med_gas_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle med_gas_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle med_gas_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle med_gas_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle med_gas_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle med_gas_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle soleus_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle soleus_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle soleus_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle soleus_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle soleus_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle soleus_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle soleus_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle soleus_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle tib_post_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle tib_post_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle tib_post_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle tib_post_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle tib_post_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle tib_post_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle tib_post_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle tib_post_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle tib_ant_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle tib_ant_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle tib_ant_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle tib_ant_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle tib_ant_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle tib_ant_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle tib_ant_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle tib_ant_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_med1_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_med1_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_med1_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_med1_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_med1_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_med1_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_med1_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_med1_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_med2_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_med2_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_med2_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_med2_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_med2_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_med2_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_med2_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_med2_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_med3_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_med3_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_med3_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_med3_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_med3_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_med3_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_med3_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_med3_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle bifemlh_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle bifemlh_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle bifemlh_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle bifemlh_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle bifemlh_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle bifemlh_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle bifemlh_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle bifemlh_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle bifemsh_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle bifemsh_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle bifemsh_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle bifemsh_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle bifemsh_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle bifemsh_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle bifemsh_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle bifemsh_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle sar_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle sar_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle sar_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle sar_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle sar_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle sar_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle sar_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle sar_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle add_mag2_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle add_mag2_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle add_mag2_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle add_mag2_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle add_mag2_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle add_mag2_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle add_mag2_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle add_mag2_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle tfl_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle tfl_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle tfl_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle tfl_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle tfl_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle tfl_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle tfl_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle tfl_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle pect_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle pect_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle pect_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle pect_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle pect_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle pect_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle pect_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle pect_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle grac_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle grac_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle grac_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle grac_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle grac_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle grac_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle grac_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle grac_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_max1_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_max1_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_max1_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_max1_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_max1_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_max1_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_max1_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_max1_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_max2_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_max2_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_max2_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_max2_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_max2_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_max2_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_max2_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_max2_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle glut_max3_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle glut_max3_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle glut_max3_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle glut_max3_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle glut_max3_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle glut_max3_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle glut_max3_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle glut_max3_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle iliacus_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle iliacus_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle iliacus_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle iliacus_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle iliacus_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle iliacus_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle iliacus_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle iliacus_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle psoas_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle psoas_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle psoas_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle psoas_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle psoas_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle psoas_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle psoas_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle psoas_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle quad_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle quad_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle quad_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle quad_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle quad_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle quad_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle quad_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle quad_fem_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle gem_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle gem_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle gem_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle gem_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle gem_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle gem_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle gem_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle gem_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle peri_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle peri_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle peri_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle peri_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle peri_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle peri_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle peri_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle peri_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle rect_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle rect_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle rect_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle rect_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle rect_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle rect_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle rect_fem_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle rect_fem_l, but this feature is not implemented yet so it will be ignored.
+Warning: No SimmSpline found in PathPointMovement locations. It will be ignored
+Only SimmSpline functions are supported for PathPointMovement locations.Only SimmSpline functions are supported for PathPointMovement locations.Only SimmSpline functions are supported for PathPointMovement locations.
+The muscle rect_fem_l has a conditional or moving insertion or origin, it is not implemented yet.
+
+An element FmaxTendonStrain was found in the muscle vas_int_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle vas_int_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle vas_int_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle vas_int_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle vas_int_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle vas_int_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle vas_int_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle vas_int_l, but this feature is not implemented yet so it will be ignored.
+Warning: No SimmSpline found in PathPointMovement locations. It will be ignored
+Only SimmSpline functions are supported for PathPointMovement locations.Only SimmSpline functions are supported for PathPointMovement locations.Only SimmSpline functions are supported for PathPointMovement locations.
+The muscle vas_int_l has a conditional or moving insertion or origin, it is not implemented yet.
+
+An element FmaxTendonStrain was found in the muscle med_gas_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle med_gas_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle med_gas_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle med_gas_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle med_gas_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle med_gas_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle med_gas_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle med_gas_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle soleus_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle soleus_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle soleus_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle soleus_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle soleus_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle soleus_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle soleus_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle soleus_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle tib_post_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle tib_post_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle tib_post_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle tib_post_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle tib_post_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle tib_post_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle tib_post_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle tib_post_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle tib_ant_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle tib_ant_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle tib_ant_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle tib_ant_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle tib_ant_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle tib_ant_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle tib_ant_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle tib_ant_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle ercspn_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle ercspn_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle ercspn_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle ercspn_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle ercspn_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle ercspn_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle ercspn_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle ercspn_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle ercspn_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle ercspn_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle ercspn_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle ercspn_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle ercspn_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle ercspn_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle ercspn_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle ercspn_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle intobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle intobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle intobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle intobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle intobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle intobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle intobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle intobl_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle intobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle intobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle intobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle intobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle intobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle intobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle intobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle intobl_l, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle extobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle extobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle extobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle extobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle extobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle extobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle extobl_r, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle extobl_r, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle extobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle extobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle extobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle extobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle extobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle extobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle extobl_l, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle extobl_l, but this feature is not implemented yet so it will be ignored.
+
+
+*/

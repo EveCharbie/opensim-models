@@ -1,0 +1,1075 @@
+version 4
+
+
+// File extracted from /home/charbie/Documents/Programmation/biobuddy/external/opensim-models/Models/Arm26/arm26.osim on the 2025-08-06 09:15
+
+// Original file publication : Holzbaur, K.R.S., Murray, W.M., Delp, S.L. A Model of the Upper Extremity for Simulating Musculoskeletal Surgery and Analyzing Neuromuscular Control. Annals of Biomedical Engineering, vol 33, pp 829840, 2005
+
+// Original file credit : The OpenSim Development Team (Reinbolt, J; Seth, A; Habib, A; Hamner, S) adapted from a model originally created by Kate Holzbaur (11/22/04) License: Creative Commons (CCBY 3.0). You are free to distribute, remix, tweak, and build upon this work, even commercially, as long as you credit us for the original creation. http://creativecommons.org/licenses/by/3.0/
+
+// Force units : N
+
+// Length units : meters
+
+
+gravity	0.0	-9.8066	0.0
+
+
+// --------------------------------------------------------------
+// SEGMENTS
+// --------------------------------------------------------------
+
+segment	root
+	parent	base
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	ground
+	parent	root
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	base_parent_offset
+	parent	ground
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.800000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	base_geom_2
+	parent	base_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	base_geom_3
+	parent	base_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	base_geom_4
+	parent	base_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	base_geom_5
+	parent	base_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	base_geom_6
+	parent	base_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	base
+	parent	base_geom_6
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	0.0
+	CenterOfMass	0.000000	0.000000	0.000000
+	inertia
+		0.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000
+		0.000000	0.000000	0.000000
+endsegment
+
+marker	r_acromion
+	parent	base
+	position	-0.01256000	0.04000000	0.17000000
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+segment	r_humerus_parent_offset
+	parent	base
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.017545
+		0.000000	1.000000	0.000000	-0.007000
+		0.000000	0.000000	1.000000	0.170000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_humerus_translation
+	parent	r_humerus_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_humerus_r_shoulder_elev
+	parent	r_humerus_translation
+	RTinMatrix	1
+	RT
+		-0.058898	0.401685	-0.913882	0.000000
+		0.002300	0.915523	0.402258	0.000000
+		0.998261	0.021590	-0.054846	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	x
+	rangesQ 
+		-1.570796	3.141593
+
+endsegment
+
+
+
+segment	r_humerus_rotation_1
+	parent	r_humerus_r_shoulder_elev
+	RTinMatrix	1
+	RT
+		0.194720	0.002300	0.980856	0.000000
+		0.394150	0.915523	-0.080394	0.000000
+		-0.898182	0.402258	0.177364	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_humerus_rotation_2
+	parent	r_humerus_rotation_1
+	RTinMatrix	1
+	RT
+		-0.160358	0.110460	0.980859	0.000000
+		0.567274	0.823529	-0.000000	0.000000
+		-0.807766	0.556415	-0.194721	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_humerus_reset_axis
+	parent	r_humerus_rotation_2
+	RTinMatrix	1
+	RT
+		0.048504	0.567274	-0.822100	0.000000
+		-0.033411	0.823529	0.566289	0.000000
+		0.998264	0.000000	0.058898	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_humerus
+	parent	r_humerus_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	1.864572
+	CenterOfMass	0.000000	-0.180496	0.000000
+	inertia
+		0.014810	0.000000	0.000000
+		0.000000	0.004551	0.000000
+		0.000000	0.000000	0.013193
+endsegment
+
+marker	r_humerus_epicondyle
+	parent	r_humerus
+	position	0.00500000	-0.29040000	0.03000000
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+segment	r_ulna_radius_hand_parent_offset
+	parent	r_humerus
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.006100
+		0.000000	1.000000	0.000000	-0.290400
+		0.000000	0.000000	1.000000	-0.012300
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_translation
+	parent	r_ulna_radius_hand_parent_offset
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_r_elbow_flex
+	parent	r_ulna_radius_hand_translation
+	RTinMatrix	1
+	RT
+		0.049400	0.998522	0.022675	0.000000
+		0.036600	-0.024497	0.999030	0.000000
+		0.998108	-0.048522	-0.037756	0.000000
+		0.000000	0.000000	0.000000	1.000000
+	rotations	x
+	rangesQ 
+		0.000000	2.268928
+
+endsegment
+
+
+
+segment	r_ulna_radius_hand_rotation_1
+	parent	r_ulna_radius_hand_r_elbow_flex
+	RTinMatrix	1
+	RT
+		0.261251	0.036600	0.964577	0.000000
+		0.965168	-0.024497	-0.260481	0.000000
+		0.014096	0.999030	-0.041725	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_rotation_2
+	parent	r_ulna_radius_hand_rotation_1
+	RTinMatrix	1
+	RT
+		-0.129565	0.227061	0.965224	0.000000
+		0.868547	0.495607	0.000000	0.000000
+		-0.478372	0.838342	-0.261426	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_reset_axis
+	parent	r_ulna_radius_hand_rotation_2
+	RTinMatrix	1
+	RT
+		-0.024499	0.868547	-0.495002	0.000000
+		0.042935	0.495607	0.867485	0.000000
+		0.998777	-0.000000	-0.049433	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_2
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_3
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_4
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_5
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_6
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_7
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_8
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_9
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_10
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_11
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_12
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_13
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_14
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_15
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_16
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_17
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_18
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_19
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_20
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_21
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_22
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_23
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_24
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_25
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_26
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_27
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_28
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand_geom_29
+	parent	r_ulna_radius_hand_reset_axis
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	0.000000
+		0.000000	1.000000	0.000000	0.000000
+		0.000000	0.000000	1.000000	0.000000
+		0.000000	0.000000	0.000000	1.000000
+endsegment
+
+
+
+segment	r_ulna_radius_hand
+	parent	r_ulna_radius_hand_geom_29
+	RTinMatrix	1
+	RT
+		1.000000	0.000000	0.000000	-0.000000
+		0.000000	1.000000	0.000000	-0.000000
+		0.000000	0.000000	1.000000	-0.000000
+		0.000000	0.000000	0.000000	1.000000
+	mass	1.534315
+	CenterOfMass	0.000000	-0.181479	0.000000
+	inertia
+		0.019281	0.000000	0.000000
+		0.000000	0.001571	0.000000
+		0.000000	0.000000	0.020062
+endsegment
+
+marker	r_radius_styloid
+	parent	r_ulna_radius_hand
+	position	-0.00110000	-0.23559000	0.09430000
+	technical	1
+	anatomical	0
+endmarker
+
+
+
+// --------------------------------------------------------------
+// MUSCLES
+// --------------------------------------------------------------
+
+musclegroup	base_to_r_ulna_radius_hand
+	OriginParent	base
+	InsertionParent	r_ulna_radius_hand
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	TRIlong
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	base_to_r_ulna_radius_hand
+	originposition	-0.0536	-0.0137	0.1472
+	insertionposition	-0.0219	0.0105	-0.0008
+	optimallength	0.1340
+	maximalforce	798.5200
+	tendonslacklength	0.1430
+	pennationangle	0.2094
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	TRIlong-P2
+	parent	r_humerus
+	muscle	TRIlong
+	musclegroup	base_to_r_ulna_radius_hand
+	position	-0.02714	-0.11441	-0.00664
+endviapoint
+
+
+viapoint	TRIlong-P3
+	parent	r_humerus
+	muscle	TRIlong
+	musclegroup	base_to_r_ulna_radius_hand
+	position	-0.03184	-0.22637	-0.01217
+endviapoint
+
+
+viapoint	TRIlong-P4
+	parent	r_humerus
+	muscle	TRIlong
+	musclegroup	base_to_r_ulna_radius_hand
+	position	-0.01743	-0.26757	-0.01208
+endviapoint
+
+
+muscle	BIClong
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	base_to_r_ulna_radius_hand
+	originposition	-0.0392	0.0035	0.148
+	insertionposition	0.0075	-0.0484	0.0218
+	optimallength	0.1157
+	maximalforce	624.3000
+	tendonslacklength	0.2723
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	BIClong-P2
+	parent	base
+	muscle	BIClong
+	musclegroup	base_to_r_ulna_radius_hand
+	position	-0.028945	0.01391	0.15639
+endviapoint
+
+
+viapoint	BIClong-P3
+	parent	r_humerus
+	muscle	BIClong
+	musclegroup	base_to_r_ulna_radius_hand
+	position	0.02131	0.01793	0.01028
+endviapoint
+
+
+viapoint	BIClong-P4
+	parent	r_humerus
+	muscle	BIClong
+	musclegroup	base_to_r_ulna_radius_hand
+	position	0.02378	-0.00511	0.01201
+endviapoint
+
+
+viapoint	BIClong-P5
+	parent	r_humerus
+	muscle	BIClong
+	musclegroup	base_to_r_ulna_radius_hand
+	position	0.01345	-0.02827	0.00136
+endviapoint
+
+
+viapoint	BIClong-P6
+	parent	r_humerus
+	muscle	BIClong
+	musclegroup	base_to_r_ulna_radius_hand
+	position	0.01068	-0.07736	-0.00165
+endviapoint
+
+
+viapoint	BIClong-P7
+	parent	r_humerus
+	muscle	BIClong
+	musclegroup	base_to_r_ulna_radius_hand
+	position	0.01703	-0.12125	0.00024
+endviapoint
+
+
+viapoint	BIClong-P8
+	parent	r_humerus
+	muscle	BIClong
+	musclegroup	base_to_r_ulna_radius_hand
+	position	0.0228	-0.1754	-0.0063
+endviapoint
+
+
+muscle	BICshort
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	base_to_r_ulna_radius_hand
+	originposition	0.0047	-0.0123	0.1348
+	insertionposition	0.0075	-0.0484	0.0218
+	optimallength	0.1321
+	maximalforce	435.5600
+	tendonslacklength	0.1923
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	BICshort-P2
+	parent	base
+	muscle	BICshort
+	musclegroup	base_to_r_ulna_radius_hand
+	position	-0.007075	-0.04004	0.14507
+endviapoint
+
+
+viapoint	BICshort-P3
+	parent	r_humerus
+	muscle	BICshort
+	musclegroup	base_to_r_ulna_radius_hand
+	position	0.01117	-0.07576	-0.01101
+endviapoint
+
+
+viapoint	BICshort-P4
+	parent	r_humerus
+	muscle	BICshort
+	musclegroup	base_to_r_ulna_radius_hand
+	position	0.01703	-0.12125	-0.01079
+endviapoint
+
+
+viapoint	BICshort-P5
+	parent	r_humerus
+	muscle	BICshort
+	musclegroup	base_to_r_ulna_radius_hand
+	position	0.0228	-0.1754	-0.0063
+endviapoint
+
+
+
+musclegroup	r_humerus_to_r_ulna_radius_hand
+	OriginParent	r_humerus
+	InsertionParent	r_ulna_radius_hand
+endmusclegroup
+
+ // ------ MUSCLES ------
+muscle	TRIlat
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	r_humerus_to_r_ulna_radius_hand
+	originposition	-0.006	-0.1265	0.0043
+	insertionposition	-0.0219	0.0105	-0.0008
+	optimallength	0.1138
+	maximalforce	624.3000
+	tendonslacklength	0.0980
+	pennationangle	0.1571
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	TRIlat-P2
+	parent	r_humerus
+	muscle	TRIlat
+	musclegroup	r_humerus_to_r_ulna_radius_hand
+	position	-0.02344	-0.14528	0.00928
+endviapoint
+
+
+viapoint	TRIlat-P3
+	parent	r_humerus
+	muscle	TRIlat
+	musclegroup	r_humerus_to_r_ulna_radius_hand
+	position	-0.03184	-0.22637	-0.01217
+endviapoint
+
+
+viapoint	TRIlat-P4
+	parent	r_humerus
+	muscle	TRIlat
+	musclegroup	r_humerus_to_r_ulna_radius_hand
+	position	-0.01743	-0.26757	-0.01208
+endviapoint
+
+
+muscle	TRImed
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	r_humerus_to_r_ulna_radius_hand
+	originposition	-0.0084	-0.1369	-0.0091
+	insertionposition	-0.0219	0.0105	-0.0008
+	optimallength	0.1138
+	maximalforce	624.3000
+	tendonslacklength	0.0908
+	pennationangle	0.1571
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+viapoint	TRImed-P2
+	parent	r_humerus
+	muscle	TRImed
+	musclegroup	r_humerus_to_r_ulna_radius_hand
+	position	-0.02601	-0.15139	-0.0108
+endviapoint
+
+
+viapoint	TRImed-P3
+	parent	r_humerus
+	muscle	TRImed
+	musclegroup	r_humerus_to_r_ulna_radius_hand
+	position	-0.03184	-0.22637	-0.01217
+endviapoint
+
+
+viapoint	TRImed-P4
+	parent	r_humerus
+	muscle	TRImed
+	musclegroup	r_humerus_to_r_ulna_radius_hand
+	position	-0.01743	-0.26757	-0.01208
+endviapoint
+
+
+muscle	BRA
+	type	hilldegroote
+	statetype	degroote
+	musclegroup	r_humerus_to_r_ulna_radius_hand
+	originposition	0.0068	-0.1739	-0.0036
+	insertionposition	-0.0032	-0.0239	0.0009
+	optimallength	0.0858
+	maximalforce	987.2600
+	tendonslacklength	0.0535
+	pennationangle	0.0000
+	maxvelocity	10.0000
+	maxexcitation	1.0000
+endmuscle
+
+
+
+ // ------ VIA POINTS ------
+
+
+
+
+
+/*-------------- WARNINGS---------------
+
+Some wrapping objects were present on the muscle TRIlong in the original file force set.
+Wraping objects are not supported yet so they will be ignored.
+An element FmaxTendonStrain was found in the muscle TRIlong, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle TRIlong, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle TRIlong, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle TRIlong, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle TRIlong, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle TRIlong, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle TRIlong, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle TRIlong, but this feature is not implemented yet so it will be ignored.
+
+Some wrapping objects were present on the muscle TRIlat in the original file force set.
+Wraping objects are not supported yet so they will be ignored.
+An element FmaxTendonStrain was found in the muscle TRIlat, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle TRIlat, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle TRIlat, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle TRIlat, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle TRIlat, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle TRIlat, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle TRIlat, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle TRIlat, but this feature is not implemented yet so it will be ignored.
+
+Some wrapping objects were present on the muscle TRImed in the original file force set.
+Wraping objects are not supported yet so they will be ignored.
+An element FmaxTendonStrain was found in the muscle TRImed, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle TRImed, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle TRImed, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle TRImed, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle TRImed, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle TRImed, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle TRImed, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle TRImed, but this feature is not implemented yet so it will be ignored.
+
+Some wrapping objects were present on the muscle BIClong in the original file force set.
+Wraping objects are not supported yet so they will be ignored.
+An element FmaxTendonStrain was found in the muscle BIClong, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle BIClong, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle BIClong, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle BIClong, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle BIClong, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle BIClong, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle BIClong, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle BIClong, but this feature is not implemented yet so it will be ignored.
+
+
+An element FmaxTendonStrain was found in the muscle BICshort, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle BICshort, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle BICshort, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle BICshort, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle BICshort, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle BICshort, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle BICshort, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle BICshort, but this feature is not implemented yet so it will be ignored.
+
+Some wrapping objects were present on the muscle BRA in the original file force set.
+Wraping objects are not supported yet so they will be ignored.
+An element FmaxTendonStrain was found in the muscle BRA, but this feature is not implemented yet so it will be ignored.
+
+An element FmaxMuscleStrain was found in the muscle BRA, but this feature is not implemented yet so it will be ignored.
+
+An element KshapeActive was found in the muscle BRA, but this feature is not implemented yet so it will be ignored.
+
+An element KshapePassive was found in the muscle BRA, but this feature is not implemented yet so it will be ignored.
+
+An element Af was found in the muscle BRA, but this feature is not implemented yet so it will be ignored.
+
+An element Flen was found in the muscle BRA, but this feature is not implemented yet so it will be ignored.
+
+An element activation_time_constant was found in the muscle BRA, but this feature is not implemented yet so it will be ignored.
+
+An element deactivation_time_constant was found in the muscle BRA, but this feature is not implemented yet so it will be ignored.
+
+
+*/
