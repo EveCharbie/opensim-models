@@ -1,3 +1,7 @@
+This folder was taken directly from opensim-models and was not modified in this fork. 
+However, if you want triangular meshes, you can have a look at the folder opensim-models/Geometry_triangles.
+
+
 # Fixing missing polygons
 
 (1) Download Paraview and open .vtp file.

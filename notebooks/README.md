@@ -1,3 +1,4 @@
+This folder was taken directly from opensim-models and was not modified in this fork.
 Here you have direct links to open each tutorial on Google Colab (Google account required):
 
  * [Tutorial 1 - Set up OpenSim in Google Colab](https://githubtocolab.com/opensim-org/opensim-models/blob/master/notebooks/tutorials/Tutorial%201%20-%20Set%20up%20OpenSim%20in%20Google%20Colab.ipynb)
