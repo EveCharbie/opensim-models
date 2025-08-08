@@ -1,7 +1,7 @@
 # opensim-models [![Appveyor build status][buildstatus_image_appveyor]][appveyorci]
 
 
-## Original repo
+## Original repo [opensim-models](https://github.com/opensim-org/opensim-models)
 OpenSim models (.osim) and related example files that are
 distributed with the OpenSim application.
 
